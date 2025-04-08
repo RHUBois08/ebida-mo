@@ -5,11 +5,14 @@
 }
 
 .container {
+  height: 100%;
+  width: auto;
   align-items: center;
   background-color: #20569D;
   padding: 50px;
   position: relative;
   margin-top: auto;
+  gap: 20px;
 }
 
 .slidingPanels {
@@ -21,8 +24,8 @@
   padding: 20px;
   background-color: #20569D;
   /* gap: 20px; */
-  margin-bottom: 20px;
   scroll-behavior: smooth;
+  margin-bottom: 20px;
 }
 
 .panel {
@@ -79,6 +82,7 @@
   align-content: center;
   justify-self: center;
   margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .downloadBtn {
