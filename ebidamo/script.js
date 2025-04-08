@@ -1,8 +1,8 @@
-// Client-side code
-document.querySelector('.downloadBtn').addEventListener('click', function() {
-    window.location.href = '/ebidamo/apk/eBIDAmo.apk';
-    alert('Your download will start shortly!');
-});
+// Combined script.js and server.js
+// document.querySelector('.downloadBtn').addEventListener('click', function() {
+//     window.location.href = '/ebidamo/apk/eBIDAmo.apk';
+//     alert('Your download will start shortly!');
+// });
 
 document.addEventListener('DOMContentLoaded', () => {
     const sliderWrapper = document.querySelector('.slider-wrapper');
@@ -35,18 +35,18 @@ if (typeof require !== 'undefined' && typeof module !== 'undefined') {
     const app = express();
     const PORT = process.env.PORT || 3000;
 
-    app.use('/ebidamo/apk', express.static(path.join(__dirname, 'apk')));
+    // app.use('/ebidamo/apk', express.static(path.join(__dirname, 'apk')));
     app.use('/assets', express.static(path.join(__dirname, 'assets')));
 
-    app.get('/download/eBIDAmo.apk', (req, res) => {
-        const filePath = path.join(__dirname, 'apk', 'eBIDAmo.apk');
-        res.download(filePath, (err) => {
-            if (err) {
-                console.error('Error downloading file:', err);
-                res.status(500).send('Error downloading file.');
-            }
-        });
-    });
+    // app.get('/download/eBIDAmo.apk', (req, res) => {
+    //     const filePath = path.join(__dirname, 'apk', 'eBIDAmo.apk');
+    //     res.download(filePath, (err) => {
+    //         if (err) {
+    //             console.error('Error downloading file:', err);
+    //             res.status(500).send('Error downloading file.');
+    //         }
+    //     });
+    // });
 
     app.use((req, res) => {
         res.status(404).send('Resource not found.');
