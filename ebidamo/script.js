@@ -24,6 +24,46 @@ document.addEventListener('DOMContentLoaded', () => {
         currentIndex = (currentIndex < panels.length - 1) ? currentIndex + 1 : 0;
         updateSliderPosition();
     });
+
+    let startX = 0;
+    let isDragging = false;
+
+    function handleSwipe(deltaX) {
+        if (Math.abs(deltaX) < 40) return;
+        if (deltaX < 0) {
+            currentIndex = Math.min(currentIndex + 1, panels.length - 1);
+        } else {
+            currentIndex = Math.max(currentIndex - 1, 0);
+        }
+        updateSliderPosition();
+    }
+
+    sliderWrapper.addEventListener('pointerdown', (event) => {
+        if (event.pointerType === 'mouse' && event.button !== 0) return;
+        isDragging = true;
+        startX = event.clientX;
+        sliderWrapper.setPointerCapture(event.pointerId);
+        sliderWrapper.style.cursor = 'grabbing';
+    });
+
+    sliderWrapper.addEventListener('pointerup', (event) => {
+        if (!isDragging) return;
+        handleSwipe(event.clientX - startX);
+        isDragging = false;
+        sliderWrapper.style.cursor = 'grab';
+    });
+
+    sliderWrapper.addEventListener('pointercancel', () => {
+        isDragging = false;
+        sliderWrapper.style.cursor = 'grab';
+    });
+
+    sliderWrapper.addEventListener('pointerleave', (event) => {
+        if (!isDragging) return;
+        handleSwipe(event.clientX - startX);
+        isDragging = false;
+        sliderWrapper.style.cursor = 'grab';
+    });
 });
 
 // Server-side code
