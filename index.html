@@ -12,48 +12,56 @@
     </head>
 
     <body>
-        <div class="container">
-            <div class="slidingPanels">
-                <div class="slider-wrapper">
-                    <div class="panel">
-                        <div class="panel-card">
-                            <img src="assets/panel-1.png" alt="Panel 1">
+        <div class="mainLayout">
+            <div class="leftColumn">
+                <div class="slidingPanels">
+                    <div class="slider-wrapper">
+                        <div class="panel">
+                            <div class="panel-card">
+                                <img src="assets/panel-1.png" alt="Panel 1">
+                            </div>
+                        </div>
+                        <div class="panel">
+                            <div class="panel-card">
+                                <img src="assets/panel-2.png" alt="Panel 2">
+                            </div>
+                        </div>
+                        <div class="panel">
+                            <div class="panel-card">
+                                <img src="assets/panel-3.png" alt="Panel 3">
+                            </div>
+                        </div>
+                        <div class="panel">
+                            <div class="panel-card">
+                                <img src="assets/panel-4.png" alt="Panel 4">
+                            </div>
+                        </div>
+                        <div class="panel">
+                            <div class="panel-card">
+                                <img src="assets/panel-5.png" alt="Panel 5">
+                            </div>
                         </div>
                     </div>
-                    <div class="panel">
-                        <div class="panel-card">
-                            <img src="assets/panel-2.png" alt="Panel 2">
-                        </div>
-                    </div>
-                    <div class="panel">
-                        <div class="panel-card">
-                            <img src="assets/panel-3.png" alt="Panel 3">
-                        </div>
-                    </div>
-                    <div class="panel">
-                        <div class="panel-card">
-                            <img src="assets/panel-4.png" alt="Panel 4">
-                        </div>
-                    </div>
-                    <div class="panel">
-                        <div class="panel-card">
-                            <img src="assets/panel-5.png" alt="Panel 5">
-                        </div>
-                    </div>
+                    <button class="prevBtn">❮</button>
+                    <button class="nextBtn">❯</button>
                 </div>
-                <button class="prevBtn">❮</button>
-                <button class="nextBtn">❯</button>
             </div>
 
+            <div class="rightColumn">
+                <div class="downloadSection">
+                    <a class="download-btn" href="assets/eBIDAmo.apk" download><button id="downloadBtn" class="downloadBtn">I-DOWNLOAD NA!<img src="assets\new-download-icon.png" class="dlBtn"></button></a>
+                </div>
 
-            <div class="actionPart">
-                <a class="download-btn" href="assets/eBIDAmo.apk" download><button id="downloadBtn" class="downloadBtn" >I-DOWNLOAD NA!<img src="assets\new-download-icon.png" class="dlBtn"></button></a>
+                <div class="qrCodeContainer">
+                    <a href="https://forms.gle/S8uTwNuL7oNj6zBMA" target="_blank" class="qrCodeLink">
+                        <div class="qrCodeCard">
+                            <p class="qrCodeTitle">📱 For iPhone Users!</p>
+                            <p class="qrCodeText">Scan to fill up the form or Click to direct to the form</p>
+                            <img src="assets/qrcode.png" alt="QR Code" class="qrCodeImage">
+                        </div>
+                    </a>
+                </div>
             </div>
-
-            <!-- <div class="actionPart">
-                <button id="downloadBtn" class="downloadBtn">I-DOWNLOAD NA!<img src="assets\new-download-icon.png" class="dlBtn"></button>
-            </div> -->
-
         </div>
     </body>
 </html>

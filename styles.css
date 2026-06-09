@@ -4,33 +4,79 @@
   padding: 0;
 }
 
+:root {
+  --primary-color: #20569D;
+  --secondary-color: #131D86;
+  --light-bg: #f8fbff;
+  --spacing-xs: 8px;
+  --spacing-sm: 16px;
+  --spacing-md: 24px;
+  --spacing-lg: 32px;
+  --spacing-xl: 40px;
+  --border-radius-sm: 12px;
+  --border-radius-md: 16px;
+  --border-radius-lg: 24px;
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 8px 16px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
 html, body {
-  min-height: 100%;
+  height: 100%;
 }
 
 body {
   min-height: 100vh;
   width: 100%;
-  padding: 10px 10px 20px;
-  background-color: #20569D;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-}
-
-.container {
-  width: 100%;
-  max-width: 1200px;
-  align-items: center;
-  background-color: #20569D;
-  padding: 50px;
-  position: relative;
-  margin-top: auto;
-  gap: 20px;
+  background: linear-gradient(135deg, #20569D 0%, #1e4d8f 100%);
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
+  padding: var(--spacing-md);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+.mainLayout {
+  width: 100%;
+  max-width: 1400px;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: var(--spacing-lg);
+  align-items: center;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.98), rgba(248, 251, 255, 0.98));
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-lg);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+}
+
+.leftColumn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 500px;
+}
+
+.rightColumn {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+  align-items: stretch;
+  justify-content: center;
+}
+
+.downloadSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 0 0 auto;
+}
+
+.qrCodeContainer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex: 1;
 }
 
 .slidingPanels {
@@ -40,10 +86,8 @@ body {
   justify-content: center;
   width: 100%;
   overflow: hidden;
-  padding: 10px 0;
-  background-color: #20569D;
+  background-color: transparent;
   scroll-behavior: smooth;
-  margin-bottom: 20px;
 }
 
 .slider-wrapper {
@@ -65,38 +109,44 @@ body {
 }
 
 .panel-card {
-  width: min(100%, 920px);
-  padding: 16px;
+  width: min(100%, 900px);
+  padding: var(--spacing-md);
   display: flex;
   justify-content: center;
-  background-color: #f8fbff;
-  border-radius: 24px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+  background-color: var(--light-bg);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-md);
 }
 
 .panel-card img {
   width: 100%;
   height: auto;
-  max-height: 75vh;
+  max-height: 70vh;
   object-fit: contain;
-  border-radius: 18px;
+  border-radius: var(--border-radius-md);
   background-color: transparent;
-  box-shadow: none;
 }
 
 .prevBtn, .nextBtn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background-color: rgba(255, 255, 255, 0.85);
-  color: #20569D;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: var(--primary-color);
   border: none;
   padding: 12px 14px;
   cursor: pointer;
   z-index: 10;
   font-size: 32px;
   border-radius: 50%;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--shadow-md);
+  transition: all 0.3s ease;
+}
+
+.prevBtn:hover, .nextBtn:hover {
+  background-color: white;
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
 }
 
 .prevBtn {
@@ -107,95 +157,265 @@ body {
   right: 12px;
 }
 
-.actionPart {
-  
-  width: fit-content;
-  background-color: #20569D;
-  padding: 5px;
-  align-content: center;
-  justify-self: center;
-  margin-top: 50px;
+.download-btn {
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 .downloadBtn {
-  justify-self: center;
-  align-self: center;
-  padding: 5px;
+  padding: 16px 24px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 5px;
-  background-color: white;
-  color: #131D86;
-  border-radius: 10px;
+  gap: 12px;
+  background: linear-gradient(135deg, #ffffff 0%, #f8fbff 100%);
+  color: var(--secondary-color);
+  border: 2px solid var(--secondary-color);
+  border-radius: var(--border-radius-sm);
   font-size: 15px;
-  font-weight: bold;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: var(--shadow-md);
+  letter-spacing: 0.5px;
+  white-space: nowrap;
 }
 
 .downloadBtn:hover {
-  transform: scale(1.05);
-  transition: background-color 0.4s ease, transform 0.4s ease;
+  transform: translateY(-4px) scale(1.05);
+  background: linear-gradient(135deg, #f8fbff 0%, #ffffff 100%);
+  box-shadow: 0 12px 24px rgba(19, 29, 134, 0.2);
+  border-color: var(--primary-color);
 }
 
 .downloadBtn .dlBtn {
-  height: 25px;
-  width: 25px;
-  align-self: center;
+  height: 24px;
+  width: 24px;
   display: block;
+}
+
+.qrCodeLink {
+  text-decoration: none;
+  cursor: pointer;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.qrCodeCard {
+  background: linear-gradient(135deg, #ffffff 0%, #f8fbff 100%);
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-md);
+  width: 100%;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  border: 2px solid var(--secondary-color);
+}
+
+.qrCodeLink:hover .qrCodeCard {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 16px 40px rgba(32, 86, 157, 0.25);
+  border-color: rgba(19, 29, 134, 0.3);
+}
+
+.qrCodeTitle {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--secondary-color);
+  margin: 0;
+  text-align: center;
+  letter-spacing: 0.3px;
+}
+
+.qrCodeText {
+  font-size: 12px;
+  color: #666;
+  margin: 0;
+  text-align: center;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.qrCodeImage {
+  width: 220px;
+  height: 220px;
+  border-radius: var(--border-radius-sm);
+  background-color: white;
+  padding: var(--spacing-sm);
+  box-shadow: var(--shadow-md);
+  transition: transform 0.3s ease;
+}
+
+.qrCodeLink:hover .qrCodeImage {
+  transform: scale(1.05);
+}
+
+/* Responsive Design */
+
+@media (max-width: 1024px) {
+  .mainLayout {
+    grid-template-columns: 1fr;
+    max-width: 900px;
+  }
+
+  .leftColumn {
+    min-height: 400px;
+  }
+
+  .rightColumn {
+    flex-direction: row;
+    gap: var(--spacing-md);
+  }
+
+  .downloadSection {
+    flex: 1;
+  }
+
+  .qrCodeContainer {
+    flex: 1;
+    justify-content: center;
+  }
 }
 
 @media (max-width: 768px) {
   body {
-    padding: 8px;
+    padding: var(--spacing-sm);
   }
 
-  .container {
-    padding: 20px 12px;
+  .mainLayout {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius-md);
     max-width: 100%;
-    min-height: calc(100vh - 40px);
-    justify-content: center;
+  }
+
+  .leftColumn {
+    width: 100%;
+    min-height: 350px;
+  }
+
+  .rightColumn {
+    flex-direction: column;
+    gap: var(--spacing-lg);
   }
 
   .slidingPanels {
     padding: 0;
-    margin-bottom: 16px;
   }
 
   .panel {
     padding: 0;
-    align-items: center;
   }
 
   .panel-card {
     width: 100%;
     max-width: 100%;
-    padding: 16px;
-    border-radius: 20px;
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius-md);
   }
 
   .panel-card img {
     width: 100%;
     max-width: 100%;
-    max-height: 60vh;
+    max-height: 55vh;
     height: auto;
     object-fit: contain;
   }
 
   .prevBtn, .nextBtn {
-    font-size: 28px;
+    font-size: 24px;
     padding: 10px 12px;
   }
 
-  .actionPart {
-    width: 100%;
-    display: flex;
-    justify-content: center;
+  .downloadBtn {
+    font-size: 14px;
+    padding: 12px 20px;
+  }
+
+  .qrCodeCard {
+    padding: var(--spacing-md);
+  }
+
+  .qrCodeTitle {
+    font-size: 15px;
+  }
+
+  .qrCodeText {
+    font-size: 11px;
+  }
+
+  .qrCodeImage {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --spacing-lg: 20px;
+    --spacing-md: 16px;
+  }
+
+  body {
+    padding: var(--spacing-xs);
+  }
+
+  .mainLayout {
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+  }
+
+  .leftColumn {
+    min-height: 300px;
+  }
+
+  .panel-card {
+    padding: var(--spacing-sm);
+  }
+
+  .panel-card img {
+    max-height: 50vh;
+  }
+
+  .prevBtn, .nextBtn {
+    font-size: 20px;
+    padding: 8px 10px;
   }
 
   .downloadBtn {
-    width: 100%;
-    max-width: 320px;
+    font-size: 13px;
+    padding: 10px 16px;
+    gap: 8px;
+  }
+
+  .downloadBtn .dlBtn {
+    height: 20px;
+    width: 20px;
+  }
+
+  .qrCodeCard {
+    padding: var(--spacing-md);
+  }
+
+  .qrCodeTitle {
     font-size: 14px;
-    padding: 12px 16px;
+  }
+
+  .qrCodeText {
+    font-size: 10px;
+  }
+
+  .qrCodeImage {
+    width: 160px;
+    height: 160px;
   }
 }
